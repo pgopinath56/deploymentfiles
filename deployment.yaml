@@ -1,0 +1,25 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: divdeploy
+  labels:
+    app: div
+    env: p
+spec:
+  selector:
+    matchLabels:
+      app: fb
+  replicas: 2
+  template:
+    metadata:
+      name: fbpod
+      labels:
+        app: fb
+        env: p
+    spec:
+      containers:
+        - name: fbcont
+          image: gopinath56/python:flask
+          ports: 
+            - containerPort: 80
